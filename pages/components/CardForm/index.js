@@ -65,9 +65,9 @@ const CardForm = () => {
 
                 onChange={onChange}
             >
-                {form.confia == 1.65 ? <option selected value={1.65}>90%</option>:<option value={1.65}>90%</option>} 
-                {form.confia == 1.96 ? <option selected value={1.96}>95%</option>:<option value={1.96}>95%</option>} 
-                {form.confia == 2.57 ? <option selected value={2.57}>100%</option>:<option value={2.57}>100%</option>} 
+                {form.confia == 1.65 ? <option defaultValue value={1.65}>90%</option>:<option value={1.65}>90%</option>} 
+                {form.confia == 1.96 ? <option defaultValue value={1.96}>95%</option>:<option value={1.96}>95%</option>} 
+                {form.confia == 2.57 ? <option defaultValue value={2.57}>100%</option>:<option value={2.57}>100%</option>} 
                
                 
             </select>

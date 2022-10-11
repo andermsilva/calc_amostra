@@ -12,19 +12,29 @@ const CardForm = () => {
     })
     const [result,setResult] = useState({});
     const calcular = async ()=>{
-        try{
-            const response = await fetch('/api/calc_erro',{
-                    method: 'POST',
-                    body: JSON.stringify(form)
-                })
-                const data = await response.json()
+      //  if(form.confia!='' && form.erro!=''&& form.amostra != ''){
+            
+            try{
+                const response = await fetch('/api/calc_erro',{
+                        method: 'POST',
+                        body: JSON.stringify(form)
+                    })
+                    const data = await response.json()
+    
+                    setResult(data);
 
-                setResult(data);
-                
-            }catch(err){
+                       
+                    
+                }catch(err){
+                    
+                }
+      /*   }else{
+            alert('erro');
+            let msg = 'Preencha todos os camposs';
 
-            }
-
+            setForm(form.amostra= msg)
+        }
+ */
     }
 
     const onChange = evt => {
@@ -41,7 +51,7 @@ const CardForm = () => {
 
     }
     return (
-        <div className='w-2/5 h-auto drop-shadow-md border-x border-y rounded-md px-2 text-indigo-400 py-2'>
+        <div className='w-2/5 h-auto drop-shadow-md border-x border-y rounded-md px-2 text-indigo-400 py-4'>
 
             <label className='text-indigo-300 text-font-input'>População</label><br />
             <input className='h-11 w-60 focus:outline-none px-2 text-lg mb-4 rounded-md'
@@ -89,10 +99,10 @@ const CardForm = () => {
             </div>
             <div className=' w-full text-center'>
 
-            <button onClick={calcular} className='bg-lime-500 
+            <button onClick={calcular} className='bg-gray-400 
                                         px-12 py-4 font-bold 
                                         text-gray-50 rounded-lg 
-                                        shadow-lg hover:shadow  active:bg-lime-600'>
+                                        shadow-lg hover:shadow  active:bg-gray-300'>
                 Calcular
             </button>
             </div>

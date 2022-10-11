@@ -5,18 +5,19 @@ import FormField from "./components/FormField";
 const Home = () => {
   return (
     <>
-      <main className="w-10/2    m-auto py-3 ">
+      <main className="w-10/2  m-auto py-3 bg-slate-800 ">
         <h1
-          className="text-violet-800 
-                                        text-sm
-                                        py-8
-                                        max-w-2xl
-                                        text-center
-                                        font-bold 
-                                        m-auto
-                                        bg-slate-100"
+          className="text-indigo-400
+                      text-lg
+                      py-8
+                      max-w-2xl
+                      text-center
+                      font-bold 
+                      m-auto
+                      rounded-md
+                      bg-slate-100"
         >
-          Calculadora da Amaostra
+         Calculadora de tamanho de amostra
         </h1>
         <section
           className="max-w-2xl 

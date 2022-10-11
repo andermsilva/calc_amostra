@@ -14,25 +14,23 @@ const Home = () => {
                                         text-center
                                         font-bold 
                                         m-auto
-                                        bg-amber-400"
+                                        bg-slate-100"
         >
-          Hello word!GG
+          Calculadora da Amaostra
         </h1>
         <section
-          className="max-w-2xl my-10 m-auto
-                                    py-6 flex justify-around
-                                    rounded-md border-solid 
-                                    border-1"
+          className="max-w-2xl 
+                    my-4 m-auto bg-gray-50
+                    py-6 flex justify-around
+                    rounded-md border-solid 
+                    border-1"
         >
-          <CardForm />
-          <CardResult>
-            
-            <FormField
-              name={"teste"}
-              value={15}
-              onChange={() => alert("ola")}
-            />
-          </CardResult>
+          <CardForm
+          
+          />
+
+          
+          
         </section>
       </main>
     </>

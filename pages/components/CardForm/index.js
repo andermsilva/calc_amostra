@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
+import FormField from '../FormField';
 
 const CardForm = () => {
 
     const [form, setForm] = useState({
 
         pop: '',
-        amost: '',
-        confia: 1.65,
-        erro: 0
-
+       
+        confia: 1.96,
+        erro: ''
     })
     const [result,setResult] = useState({});
     const calcular = async ()=>{
@@ -41,45 +41,62 @@ const CardForm = () => {
 
     }
     return (
-        <div className='w-2/5 h-80 drop-shadow-xl border-x border-b px-3 '>
+        <div className='w-2/5 h-auto drop-shadow-md border-x border-y rounded-md px-2 text-indigo-400 py-2'>
 
             <label className='text-indigo-300 text-font-input'>População</label><br />
-            <input className='h-11 w-60 focus:outline-none px-2 text-font-input'
+            <input className='h-11 w-60 focus:outline-none px-2 text-lg mb-4 rounded-md'
                 placeholder='População'
                 name='pop'
                 value={form.pop}
                 onChange={onChange}
 
             />
+            <br />
             <label className='text-indigo-300 text-font-input'>Erro %</label><br />
-            <input className='h-11 w-60 focus:outline-none px-2 text-font-input'
+            <input className='h-11 w-60 focus:outline-none px-2 text-lg text-indigo-300 mb-4 rounded-md '
                 placeholder='erro %'
                 name='erro'
                 value={form.erro}
                 onChange={onChange}
 
             />
+            <br />
             <label className='text-indigo-300 text-font-input'>Confiança</label><br />
-            <select className='h-11 w-60 focus:outline-none px-2 text-font-input'
-                    name='confia'
+            <select className='h-11 w-60 focus:outline-none px-2 text-lg text-indigo-400 mb-4 rounded-md'
+                    name='confia '
 
                 onChange={onChange}
             >
-                {form.confia == 1.65 ? <option defaultValue value={1.65}>90%</option>:<option value={1.65}>90%</option>} 
-                {form.confia == 1.96 ? <option defaultValue value={1.96}>95%</option>:<option value={1.96}>95%</option>} 
-                {form.confia == 2.57 ? <option defaultValue value={2.57}>100%</option>:<option value={2.57}>100%</option>} 
+                {form.confia == 1.65 ? <option selected={1.65}>90%</option>:<option value={1.65}>90%</option>} 
+                {form.confia == 1.96 ? <option selected={1.96}>95%</option>:<option value={1.96}>95%</option>} 
+                {form.confia == 2.57 ? <option selected={2.57}>100%</option>:<option value={2.57}>100%</option>} 
                
                 
             </select>
-
-
-
             
-            <button onClick={calcular} className='bg-lime-600 px-12 py-4 font-bold text-gray-50 rounded-lg shadow-lg hover:shadow  my-3'>
+            <label className='text-indigo-300 text-center  text-lg'>Amostra</label>
+            <div className='w-full text-lg h-11 border-1  box-border border-x border-y rounded-md text-center pt-2 mb-4'>
+                
+             
+                {result.amostra > 0 ?
+                
+                <label className='text-indigo-500 text-center font-bold text-lg'>{result.amostra}</label> :
+                <label className='text-indigo-300 text-center  text-lg'>? ? ?</label>
+                
+                }
+                          
+               
+            </div>
+            <div className=' w-full text-center'>
+
+            <button onClick={calcular} className='bg-lime-500 
+                                        px-12 py-4 font-bold 
+                                        text-gray-50 rounded-lg 
+                                        shadow-lg hover:shadow  active:bg-lime-600'>
                 Calcular
             </button>
-            <pre>{result && JSON.stringify(result, null, 2)}</pre>
-            
+            </div>
+                        
         </div>
     );
 }

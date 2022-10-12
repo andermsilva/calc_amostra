@@ -36,14 +36,14 @@ const CardForm = () => {
                    let msg = '';  
                    if(!form.pop || form.pop < 0){
 
-                       msg +='- Informe a População maior.';
+                       msg +='- Informe a População maior que zero .';
                      
                     }
                     
-                    if(!form.erro|| form.erro < 0){
+                    if(!form.erro|| form.erro <= 0){
                         msg +=' - Informe o erro aceitável.';
                     }
-                    if(!form.confia || form.confia === 0){
+                    if(!form.confia || form.confia == 0){
                         msg +=' - Informe o nivel de confiança.';
                     }
                    
@@ -85,7 +85,7 @@ const CardForm = () => {
     }
     return (
         <div className='w-2/5 h-auto drop-shadow-md border-x border-y rounded-md px-2 text-indigo-400 py-4 '>
-          <label  className='text-red-600 text-font-input'> {msgErro} </label>        
+          <label  className='text-red-600 text-font-input'> {msgErro}<br /> </label>        
             
             
             <label className='text-indigo-300 text-font-input'>População</label><br />

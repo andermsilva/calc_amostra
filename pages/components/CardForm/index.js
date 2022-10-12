@@ -10,8 +10,17 @@ const CardForm = () => {
 
     const [msgErro, setMsgErro] = useState('');
     const [result,setResult] = useState({});
-
-
+    
+    function milhar(n){
+        var n = ''+n, t = n.length -1, novo = '';
+    
+        for( var i = t, a = 1; i >=0; i--, a++ ){
+            var ponto = a % 3 == 0 && i > 0 ? '.' : '';
+            novo = ponto + n.charAt(i) + novo;
+        }
+        return novo;
+    }
+   
     const calcular = async ()=>{
      setMsgErro(msgErro = '');   
      if(form.confia > 0 && form.erro > 0 && form.pop > 0 ){
@@ -132,7 +141,7 @@ const CardForm = () => {
              
                 {result.amostra > 0 ?
                 
-                <label className='text-indigo-500 text-center font-bold text-lg'>{result.amostra}</label> :
+                <label className='text-indigo-500 text-center font-bold text-lg'>{milhar(result.amostra)}</label> :
                 <label className='text-indigo-300 text-center  text-lg'>? ? ?</label>
                
                }

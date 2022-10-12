@@ -1,7 +1,8 @@
+import Link from "next/link";
+import Image from "next/image";
 import CardForm from "./components/CardForm";
-import CardResult from "./components/CardResult";
-import FormField from "./components/FormField";
-
+import CPS from '../public/cps.png'
+import ADS from '../public/ads.png'
 const Home = () => {
   return (
     <>
@@ -26,14 +27,27 @@ const Home = () => {
                     rounded-md border-solid 
                     border-1"
         >
-          <CardForm
-          
-          />
-
-          
-          
+          <CardForm />          
         </section>
       </main>
+      <footer className="bg-slate-900 text-slate-400 py-4 px-2 flex justify-between items-center h-40">
+           <div>
+            <Image src={CPS} width={200} height={75}/>
+            </div>
+           <div className='h-fit'> 
+            <label>
+              <Link href={'https://sociallinks-chi.vercel.app/'} >
+              <a target={'_blank'}> Desenvolvido por Anderson Marques</a>
+              </Link>
+            </label>
+           
+           </div>
+           <div>
+            <Image src={ADS} width={140} height={120}/>
+            </div>
+          
+
+      </footer>
     </>
   );
 };

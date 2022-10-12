@@ -8,13 +8,14 @@ const CardForm = () => {
         erro: ''
     });
 
-    const nv=[90,95,100];
-const [result,setResult] = useState({});
-    const calcular = async ()=>{
-//F azera validação----------------------------------------@@@@@@@@@@@@@@@@@@@@@
+    const [msgErro, setMsgErro] = useState('');
+    const [result,setResult] = useState({});
 
-      //  if(form.confia!='' && form.erro!=''&& form.amostra != ''){
-           
+
+    const calcular = async ()=>{
+     setMsgErro(msgErro = '');   
+     if(form.confia > 0 && form.erro > 0 && form.pop > 0 ){
+        
             try{
                 const response = await fetch('/api/calc_erro',{
                         method: 'POST',
@@ -27,17 +28,30 @@ const [result,setResult] = useState({});
                     
                     
                 }catch(err){
-                    
+                   
                 }
-                /*   }else{
-                    alert('erro');
-                    let msg = 'Preencha todos os camposs';
+                  }else{
+                   /*  setMsgErro(msgErro = ''); */
+                   /* */
+                   let msg = '';  
+                   if(!form.pop || form.pop < 0){
+
+                       msg +='- Informe a População maior.';
+                     
+                    }
                     
-                    setForm(form.amostra= msg)
+                    if(!form.erro|| form.erro < 0){
+                        msg +=' - Informe o erro aceitável.';
+                    }
+                    if(!form.confia || form.confia === 0){
+                        msg +=' - Informe o nivel de confiança.';
+                    }
+                   
+                   setMsgErro(msgErro = msg);
                 }
-                */
-            }
-            
+               
+           
+        }
     const reset=()=>{
 
         setForm(
@@ -62,17 +76,20 @@ const [result,setResult] = useState({});
 
         console.log('onchange ',value);
 
+
         setForm(old => ({
             ...old,
             [key]: value
         }))
-
+        setMsgErro(msgErro = '');   
     }
     return (
         <div className='w-2/5 h-auto drop-shadow-md border-x border-y rounded-md px-2 text-indigo-400 py-4 '>
-
+          <label  className='text-red-600 text-font-input'> {msgErro} </label>        
+            
+            
             <label className='text-indigo-300 text-font-input'>População</label><br />
-            <input className='h-11 w-11/12 focus:outline-none px-2 text-lg mb-4 rounded-md mx-auto '
+            <input type='number' className='h-11 w-11/12 focus:outline-none px-2 text-lg mb-4 rounded-md mx-auto '
                 placeholder='População'
                 name='pop'
                 value={form.pop}
@@ -81,7 +98,7 @@ const [result,setResult] = useState({});
             />
             <br />
             <label className='text-indigo-300 text-font-input'>Erro %</label><br />
-            <input className='h-11  w-11/12 focus:outline-none px-2 text-lg text-indigo-300 mb-4 rounded-md'
+            <input type='number' className='h-11  w-11/12 focus:outline-none px-2 text-lg text-indigo-300 mb-4 rounded-md'
                 placeholder='erro %'
                 name='erro'
                 value={form.erro}
@@ -102,7 +119,7 @@ const [result,setResult] = useState({});
 
                <option value={0}>-- Nível de Confiança --</option>
                <option value={1.65}>90%</option>
-               <option selected value={1.96}>95%</option>
+               <option value={1.96}>95%</option>
                <option value={2.57}>100%</option>
             
                
@@ -117,8 +134,8 @@ const [result,setResult] = useState({});
                 
                 <label className='text-indigo-500 text-center font-bold text-lg'>{result.amostra}</label> :
                 <label className='text-indigo-300 text-center  text-lg'>? ? ?</label>
-                
-                }
+               
+               }
                           
                
             </div>

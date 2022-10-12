@@ -18,7 +18,7 @@ const Home = () => {
                       rounded-md
                       bg-slate-100"
         >
-         Calculadora de tamanho de amostra
+         Calculadora de tamanho da amostra
         </h1>
         <section
           className="max-w-2xl 

@@ -93,7 +93,11 @@ const CardForm = () => {
         setMsgErro(msgErro = '');   
     }
     return (
+ 
         <div className='w-2/5 h-auto drop-shadow-md border-x border-y rounded-md px-2 text-indigo-400 py-4 '>
+
+
+        
           <label  className='text-red-600 text-font-input'> {msgErro}<br /> </label>        
             
             
@@ -160,6 +164,7 @@ const CardForm = () => {
             </div>
                         
         </div>
+       
     );
 }
 export default CardForm;
